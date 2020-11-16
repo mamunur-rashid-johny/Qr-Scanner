@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Qr Scanner</string>
+    <string name="please_move_your_over_a_qr_code">Please Move Your Camera Over a Qr Code</string>
+</resources>
