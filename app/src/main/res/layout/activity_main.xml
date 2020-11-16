@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#a9a9a9"
     tools:context=".MainActivity">
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -21,8 +20,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
     |
-
     <ImageView
+        android:id="@+id/dev_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -36,7 +35,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="300dp"
         android:layout_margin="20dp"
         android:background="#a9a9a9"
         app:cardCornerRadius="10dp"
@@ -61,10 +60,10 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="-16dp"
-
                     android:background="@drawable/border" />
 
                 <View
+                    android:id="@+id/dot_line"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
                     android:layout_gravity="center_vertical"
@@ -100,31 +99,36 @@
                 android:textColor="@color/primary_dark"
                 android:text="@string/please_move_your_over_a_qr_code"
                 android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/camera_ui"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/design_pat"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:src="@drawable/ic_qrcode_test" />
             <Button
                 android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/camera_ui"
+                android:id="@+id/gen_btn"
+                android:layout_below="@+id/design_pat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_code_24"
+                android:text="@string/generate_qr_code"
+                android:textAllCaps="false"
+                android:fontFamily="@font/amaranth"
+                style="?attr/materialButtonOutlinedStyle"
+                />
+            <Button
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
                 android:id="@+id/scan_btn"
+                android:layout_below="@+id/gen_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_baseline_search_24"
-                android:text="Scan Qr Code"
+                android:text="@string/scan_qr_code"
+                android:textAllCaps="false"
+                android:fontFamily="@font/amaranth"
                 style="?attr/materialButtonOutlinedStyle"
                 />
-
-
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

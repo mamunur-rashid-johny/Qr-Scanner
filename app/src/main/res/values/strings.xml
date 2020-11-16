@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">Qr Scanner</string>
-    <string name="please_move_your_over_a_qr_code">Please Move Your Camera Over a Qr Code</string>
+    <string name="please_move_your_over_a_qr_code">Demo Code Scanner &amp; Generator</string>
+    <string name="scan_qr_code">Scan Qr Code</string>
+    <string name="generate_qr_code">Generate Qr Code</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_text_here">Enter Text Here</string>
+
+    <string-array name="type_string">
+        <item>QR Code</item>
+        <item>Barcode</item>
+        <item>Data Matrix</item>
+        <item>PDF 417</item>
+        <item>Barcode-39</item>
+        <item>Barcode-93</item>
+        <item>AZTEC</item>
+    </string-array>
+
+    <string name="type_prompt">Select Type</string>
 </resources>
