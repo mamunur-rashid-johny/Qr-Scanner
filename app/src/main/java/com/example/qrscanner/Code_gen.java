@@ -14,8 +14,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,9 +27,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.textview.MaterialTextView;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
+
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
@@ -39,7 +42,7 @@ import java.util.Calendar;
 
 public class Code_gen extends AppCompatActivity {
 
-    private String message = "";
+    private static String message = "";
     private String type = "";
     private Button button_generate;
     private TextInputLayout editText1;
@@ -125,7 +128,7 @@ public class Code_gen extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if (bitmap !=null){
-                    imageView.setImageBitmap(bitmap);
+                    imageView.setImageBitmap(myBitmap);
                 }
 
             }
@@ -138,14 +141,62 @@ public class Code_gen extends AppCompatActivity {
         // BitMatrix bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);
         switch (type)
         {
-            case "QR Code": bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);break;
-            case "Barcode": bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.CODE_128, size_width, size_height);break;
-            case "Data Matrix": bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.DATA_MATRIX, size, size);break;
-            case "PDF 417": bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.PDF_417, size_width, size_height);break;
-            case "Barcode-39":bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.CODE_39, size_width, size_height);break;
-            case "Barcode-93":bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.CODE_93, size_width, size_height);break;
-            case "AZTEC": bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.AZTEC, size, size);break;
-            default: bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);break;
+            case "QR Code":
+                try {
+                    bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Barcode":
+                try {
+                    bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.CODE_128, size_width, size_height);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Data Matrix":
+                try {
+                    bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.DATA_MATRIX, size, size);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "PDF 417":
+                try {
+                    bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.PDF_417, size_width, size_height);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Barcode-39":
+                try {
+                    bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.CODE_39, size_width, size_height);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Barcode-93":
+                try {
+                    bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.CODE_93, size_width, size_height);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "AZTEC":
+                try {
+                    bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.AZTEC, size, size);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                try {
+                    bitMatrix = new MultiFormatWriter().encode(message, BarcodeFormat.QR_CODE, size, size);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
         int width = bitMatrix.getWidth();
         int height = bitMatrix.getHeight();
@@ -265,9 +316,9 @@ public class Code_gen extends AppCompatActivity {
             // Save image
             saveBitmap(myBitmap, message, ".jpg");
 
-            LayoutInflater layoutInflater = LayoutInflater.from(MainActivity.this);
+            LayoutInflater layoutInflater = LayoutInflater.from(Code_gen.this);
             View view = layoutInflater.inflate(R.layout.success_dialog, null);
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Code_gen.this);
             builder.setTitle("Summary");
             builder.setCancelable(false);
             builder.setView(view);
@@ -288,7 +339,6 @@ public class Code_gen extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
